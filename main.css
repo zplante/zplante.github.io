@@ -4,6 +4,12 @@
 	color: #999;
 	
 }
+.bio {
+    margin-top: 0px;
+  	margin-bottom: 0px;
+  	margin-right: 50px;
+  	margin-left: 50px;
+}
 h1{
 	font-family: Lucida Console;
 }
