@@ -1,43 +1,106 @@
-<!doctype html>
+
 <html>
 	<head>
-	<title>Zachary Plante</title>
-	<link href="main.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-	 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
+		<title>Socially Distant Animals</title>
 	</head>
-	<body class="body">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Zachary Plante</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+	<body>
+		<header>
+			<h1>Socially Distant Animals</h1>
+		</header>
+		<div>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="resume.html">Resume <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="doubleindex.html">Experience</a>
-      </li>
-       <li class="nav-item active">
-        <a class="nav-link" href="https://www.linkedin.com/in/zachary-plante-017658182/">LinkedIn</a>
-      </li>
-       <li class="nav-item active">
-        <a class="nav-link" href="https://github.com/zplante">GitHub</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-		<center><h1>Thanks for visiting my site!</h1></center>
-
-		<div class="bio">
-		<h4>
-			Hi, my name is Zachary Plante and I am a graduate from University of California, Santa Cruz's Jack Baskin School of Engineering with a B.S. in Computer Science. I have experince in modern programming languages like JavaScript, Python, and C as well as frameworks such as Django and React. I have 8 years of programming experience and 2 years as a Full Stack Developer, tho my specialites lie in Mobile and Web Development. I am self-motivated, an excellent communicator, a team player and I have a very strong work ethic. I am confident that I would make an excellent and valuable addition to any organization.
+		<select id="animalList" onChange="display()">
+			<option>Select An Animal</option>
+			<option value= "giantPanda.png">Giant Panda</option>
+			<option value= "polarBear.png">Polar Bear</option>
+			<option value= "alpaca.png">Alpaca</option>
+			<option value= "camal.png">Camal</option>
+			<option value= "llama.png">Llama</option>
+			<option value= "blueWhale.png">Blue Whale</option>
+			<option value= "humpbackWhale.png">Humpback Whale</option>
+			<option value= "greatWhiteShark.png">Great White Shark</option>
+			<option value= "galapagosGiantTortoise.png">Galapagos Giant Tortoise</option>
+			<option value= "saltwaterCrocodile.png">Saltwater Crocodile</option>
+			<option value= "bottlenoseDolphin.png">Bottlenose Dolphin</option>
+			<option value= "orca.png">Orca</option>
+			<option value= "goldenRetriever.png">Golden Retriever</option>
+			<option value= "chihuahua.png">Chihuahua</option>
+			<option value= "cow.png">Cow</option>
+			<option value= "adelie.png">Adelie Penguin</option>
+			<option value= "emperor.png">Emperor Penguin</option>
+			<option value= "king.png">King Penguin</option>
+			<option value= "pig.png">Pig</option>
+			<option value= "africanElephant.png">African Elephant</option>
+			<option value= "donkey.png">Donkey</option>
+			<option value= "horse.png">Horse</option>
+			<option value= "zebra.png">Zebra</option>
+			<option value= "lion.png">Lion</option>
+			</select>
+			<br/>
 		</div>
-		<center><img src="images/profile.jpg" width="500" height="500" alt="Me and my favorite animal"/></center>
+		<div id="answerText">
+			This is too close together
+		</div>
+		<br>
+		<div>
+			<img id="human1" src="img/human.png" />
+			<img id="animal" src="img/blank" />
+			<img id="human2" src="img/human.png" />
+		</div>
+	<script type="text/javascript">
+		var allAnimals =
+			[["Giant Panda", 160, "giantPanda.png"],
+			["Polar Bear", 275, "polarBear.png"],
+			["Alpaca", 170, "alpaca.png"],
+			["Camal", 280, "camal.png"],
+			["Llama", 200, "llama.png"],
+			["Blue Whale", 4100, "blueWhale.png"],
+			["Humpback Whale", 1500, "humpbackWhale.png"],
+			["Great White Shark", 500, "greatWhiteShark.png"],
+			["Galapagos Giant Tortoise", 137, "galapagosGiantTortoise.png"],
+			["Saltwater Crocodile", 380, "saltwaterCrocodile.png"],
+			["Bottlenose Dolphin", 370, "bottlenoseDolphin.png"],
+			["Orca", 850, "orca.png"],
+			["Golden Retriever", 100, "goldenRetriever.png"],
+			["Chihuahua", 40, "chihuahua.png"],
+			["Cow", 245, "cow.png"],
+			["Adelie Penguin", 70, "adelie.png"],
+			["Emperor Penguin", 130, "emperor.png"],
+			["King Penguin", 100, "king.png"],
+			["Pig", 135, "pig.png"],
+			["African Elephant", 400, "africanElephant.png"],
+			["Donkey", 170, "donkey.png"],
+			["Horse", 175, "horse.png"],
+			["Zebra", 200, "zebra.png"],
+			["Lion", 150, "lion.png"]];
+		function swapImage(){
+			var image = document.getElementById("animal");
+			var imageName = document.getElementById("animalList");
+			image.src = "img/" + imageName.value;	
+		}
+		function swapText(){
+			var resultString="hey";
+			var animal = document.getElementById("animalList").value;
+			var size=0;
+			var plural='s';
+			for(var i = 0;i<allAnimals.length; i++){
+				if(allAnimals[i][2]== animal){
+					animal=allAnimals[i][0];
+					size=allAnimals[i][1];
+					if(size==200){
+						plural = "";
+					}
+					break;
+				}
+			}
+			var number = 200/size;
+			resultString ="Stay "+number.toFixed(2)+" "+animal+plural+" away from each other!";
+			document.getElementById('answerText').innerHTML = resultString;
+		}
+		function display(){
+			swapImage();
+			swapText();
+		}
+</script>
 	</body>
 </html>
