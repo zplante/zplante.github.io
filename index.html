@@ -10,7 +10,7 @@
 		<div>
 
 		<select id="animalList" onChange="display()">
-			<option>Select An Animal</option>
+			<option value= "noneSelected">Select An Animal</option>
 			<option value= "giantPanda.png">Giant Panda</option>
 			<option value= "polarBear.png">Polar Bear</option>
 			<option value= "alpaca.png">Alpaca</option>
@@ -35,6 +35,7 @@
 			<option value= "horse.png">Horse</option>
 			<option value= "zebra.png">Zebra</option>
 			<option value= "lion.png">Lion</option>
+			<option value= "rat.png">Rat</option>
 			</select>
 			<br/>
 		</div>
@@ -44,7 +45,7 @@
 		<br>
 		<div>
 			<img id="human1" src="img/human.png" />
-			<img id="animal" src="img/blank" />
+			<img id="animal" src="img/blank.png" />
 			<img id="human2" src="img/human.png" />
 		</div>
 	<script type="text/javascript">
@@ -72,7 +73,8 @@
 			["Donkey", 170, "donkey.png"],
 			["Horse", 175, "horse.png"],
 			["Zebra", 200, "zebra.png"],
-			["Lion", 150, "lion.png"]];
+			["Lion", 150, "lion.png"],
+			["Rat", 25, "rat.png"]];
 		function swapImage(){
 			var image = document.getElementById("animal");
 			var imageName = document.getElementById("animalList");
@@ -98,8 +100,16 @@
 			document.getElementById('answerText').innerHTML = resultString;
 		}
 		function display(){
+			if(document.getElementById("animalList").value=="noneSelected"){
+				var image = document.getElementById("animal");
+				image.src = "img/blank.png";
+				var resultString = "This is too close together";
+				document.getElementById('answerText').innerHTML = resultString;
+
+			}else{
 			swapImage();
 			swapText();
+			}
 		}
 </script>
 	</body>
